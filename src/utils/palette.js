@@ -1,0 +1,12 @@
+const palette = {
+  DARK_PRIMARY: "#0097A7",
+  PRIMARY: "#00BCD4",
+  LIGHT_PRIMARY: "#B2EBF2",
+  TEXT_PRIMARY: "#FFFFFF",
+  ACCENT: "#795548",
+  PRIMARY_TEXT: "#212121",
+  SECOND_TEXT: "#757575",
+  DIVIDER: "#BDBDBD"
+};
+
+export default palette;
