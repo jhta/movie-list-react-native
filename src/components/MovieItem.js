@@ -8,7 +8,9 @@ import {
   TouchableHighlight
 } from 'react-native';
 
-const MovieItem = ({ poster_path, title, overview, vote_average, goToMovie }: props) => {
+const MovieItem = ({ movie, goToMovie }) => {
+
+  const { poster_path, title, overview, vote_average } = movie;
   const pick = {
     uri: `https://image.tmdb.org/t/p/w300${poster_path}`
   };
@@ -25,7 +27,7 @@ const MovieItem = ({ poster_path, title, overview, vote_average, goToMovie }: pr
           <View style={style.metaOption}>
             <Text style={style.metaText}>{`${vote_average}/10`}</Text>
           </View>
-          <TouchableHighlight underlayColor="white" onPress={() => { goToMovie() }}>
+          <TouchableHighlight underlayColor="white" onPress={() => { goToMovie(movie) }}>
             <View style={style.metaOption}>
               <Text style={style.metaText}>More info</Text>
             </View>

@@ -14,7 +14,7 @@ const MovieList = ({ list = [], goToMovie }) => {
     <ScrollView style={style.list}>
       {
         list.map((item, index) => (
-          <MovieItem {...item} key={index} goToMovie={goToMovie}/>
+          <MovieItem movie={item} key={index} goToMovie={goToMovie}/>
       ))
       }
     </ScrollView>
