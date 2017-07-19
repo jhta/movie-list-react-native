@@ -3,6 +3,7 @@ import {
   View,
   TextInput,
   Button,
+  TouchableHighlight,
   StyleSheet
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -12,9 +13,12 @@ const Form = (props) => {
 
   return (
     <View style={styles.form}>
-      <TextInput style={styles.input} placeholder="wonder woman" />
-      <Button title="search" onPress={e => console.log(e)} />
-      <Icon name="search" size={30} color="#000"/>
+      <TextInput style={styles.input} placeholder="wonder woman" underlayColor="black"/>
+      <TouchableHighlight onPress={e => { console.log(e) }}>
+        <View style={styles.search}>
+          <Icon name="search" size={30} color="#000"/>
+        </View>
+      </TouchableHighlight>
     </View>
   );
 }
@@ -30,7 +34,13 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     height: 60,
-    fontSize: 2
+    fontSize: 20
+  },
+  search: {
+    height: 40,
+    width: 40,
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 })
 
