@@ -24,8 +24,7 @@ const MovieList = ({ list = [], goToMovie }) => {
 
 const style = StyleSheet.create({
   list: {
-    flex: 1,
-    backgroundColor: palette.DIVIDER
+    flex: 1
   },
 })
 

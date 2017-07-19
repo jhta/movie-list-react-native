@@ -4,10 +4,13 @@ import {
   Text,
   View,
   Image,
-  ScrollView
+  ScrollView,
+  Button,
+  TextInput
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import MovieList from '../../components/MovieList.js';
+import Form from '../../components/Form.js';
 
 class DiscoverView extends Component {
 
@@ -39,10 +42,13 @@ class DiscoverView extends Component {
 
   render() {
     return (
-      <MovieList
-        list={this.state.list}
-        goToMovie={this.goToMovie}
-      />
+      <View style={{flex: 1}}>
+        <Form />
+        <MovieList
+          list={this.state.list}
+          goToMovie={this.goToMovie}
+        />
+      </View>
     );
   }
 }
