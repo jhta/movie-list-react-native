@@ -5,6 +5,7 @@ import {
   Button,
   StyleSheet
 } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 const Form = (props) => {
@@ -13,6 +14,7 @@ const Form = (props) => {
     <View style={styles.form}>
       <TextInput style={styles.input} placeholder="wonder woman" />
       <Button title="search" onPress={e => console.log(e)} />
+      <Icon name="search" size={30} color="#000"/>
     </View>
   );
 }
@@ -28,7 +30,7 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     height: 60,
-    fontSize: 20
+    fontSize: 2
   }
 })
 
