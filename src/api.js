@@ -20,9 +20,9 @@ const discoverURL = (page = 1) =>
       )
   }`;
 
+const fetchMovies = (page = 1) => fetch(discoverURL(page));
 
-const API = {
-  discover: (page = 1) => fetch(discoverURL(page))
+export {
+  fetchMovies
 }
 
-export default API;

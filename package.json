@@ -13,7 +13,10 @@
 		"react-native": "0.44.2",
 		"react-native-fit-image": "^1.4.9",
 		"react-native-vector-icons": "^4.2.0",
-		"react-navigation": "^1.0.0-beta.11"
+		"react-navigation": "^1.0.0-beta.11",
+		"react-redux": "^5.0.5",
+		"redux": "^3.7.2",
+		"redux-actions": "^2.2.1"
 	},
 	"devDependencies": {
 		"babel-jest": "20.0.3",

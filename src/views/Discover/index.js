@@ -6,7 +6,7 @@ import {
 import { StackNavigator } from 'react-navigation';
 import MovieList from '../../components/MovieList.js';
 import Form from '../../components/Form.js';
-import API from '../../api.js';
+import { fetchMovies } from '../../api.js';
 
 class DiscoverView extends Component {
 
@@ -23,14 +23,12 @@ class DiscoverView extends Component {
   };
 
   componentWillMount() {
-    console.log(API)
-    console.log(API.discover)
-    API.discover()
+    fetchMovies()
       .then(response => {
-        if (response.ok) {
-          return response.json();
+        if (!response.ok) {
+          throw Error(`status: ${response.status}, ${response.responseText}`)
         }
-        console.log('error:', response.status);
+        return response.json();
       })
       .then((json) => {
         this.setState({list: json.results});
