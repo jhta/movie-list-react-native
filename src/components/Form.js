@@ -9,24 +9,26 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 
-const Form = (props) => {
+const Form = (props) => (
+  <View style={styles.form}>
+    <TextInput
+      style={styles.input}
+      placeholder="wonder woman"
+      underlayColor="black"
+    />
+    <TouchableHighlight onPress={e => { console.log(e) }}>
+      <View style={styles.search}>
+        <Icon name="search" size={30} color="#000"/>
+      </View>
+    </TouchableHighlight>
+  </View>
+);
 
-  return (
-    <View style={styles.form}>
-      <TextInput style={styles.input} placeholder="wonder woman" underlayColor="black"/>
-      <TouchableHighlight onPress={e => { console.log(e) }}>
-        <View style={styles.search}>
-          <Icon name="search" size={30} color="#000"/>
-        </View>
-      </TouchableHighlight>
-    </View>
-  );
-}
 
 const styles = StyleSheet.create({
   form: {
     flexDirection: 'row',
-    padding: 10,
+    padding: 5,
     backgroundColor: '#fff',
     marginTop: 10,
     marginBottom: 10

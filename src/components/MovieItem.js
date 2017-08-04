@@ -20,7 +20,7 @@ const MovieItem = ({ movie, goToMovie }) => {
       <Image source={pick} style={style.image}/>
       <View style={style.content}>
         <View style={style.description}>
-          <Text style={style.title}>{title.toUpperCase()}</Text>
+          <Text style={style.title}>{title.slice(0, 40).toUpperCase()}</Text>
           <Text>{`${overview.slice(0,90)}...`}</Text>
         </View>
         <View style={style.meta}>
@@ -58,7 +58,7 @@ const style = StyleSheet.create({
     alignSelf: 'stretch'
   },
   title: {
-    fontSize: 20,
+    fontSize: 19,
     fontWeight: 'bold'
   },
   image: {

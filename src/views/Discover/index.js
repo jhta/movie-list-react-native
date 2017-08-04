@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet,
-  Text,
   View,
-  Image,
   ScrollView,
-  Button,
-  TextInput
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import MovieList from '../../components/MovieList.js';
 import Form from '../../components/Form.js';
+import API from '../../api.js';
 
 class DiscoverView extends Component {
 
@@ -27,12 +23,19 @@ class DiscoverView extends Component {
   };
 
   componentWillMount() {
-
-    fetch('https://api.themoviedb.org/3/discover/movie?api_key=461db800c27fdda30417dbf9e3f33b67&language=es&sort_by=popularity.desc&include_adult=false&include_video=false&page=1')
-      .then(response => response.json())
+    console.log(API)
+    console.log(API.discover)
+    API.discover()
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        console.log('error:', response.status);
+      })
       .then((json) => {
         this.setState({list: json.results});
-      });
+      })
+      .catch((error) => console.log("the error:", error));
   }
 
   goToMovie(movie) {
