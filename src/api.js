@@ -20,7 +20,15 @@ const discoverURL = (page = 1) =>
       )
   }`;
 
-const fetchMovies = (page = 1) => fetch(discoverURL(page));
+const fetchMovies = (page = 1) =>
+  fetch(discoverURL(page))
+    .then(response => {
+      if (!response.ok) {
+        return Promise.reject(new Error("error status:" + response.status));
+      }
+      return JSON.parse(response._bodyInit);
+    })
+    .then(({ results }) => results);
 
 export {
   fetchMovies

@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   View,
+  Text,
   ScrollView,
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import MovieList from '../../components/MovieList.js';
 import Form from '../../components/Form.js';
 import { fetchMovies } from '../../api.js';
+import { fetchMovies as fetchMoviesAction } from '../../actions';
+
 
 class DiscoverView extends Component {
 
@@ -23,17 +27,7 @@ class DiscoverView extends Component {
   };
 
   componentWillMount() {
-    fetchMovies()
-      .then(response => {
-        if (!response.ok) {
-          throw Error(`status: ${response.status}, ${response.responseText}`)
-        }
-        return response.json();
-      })
-      .then((json) => {
-        this.setState({list: json.results});
-      })
-      .catch((error) => console.log("the error:", error));
+    this.props.load();
   }
 
   goToMovie(movie) {
@@ -42,16 +36,38 @@ class DiscoverView extends Component {
   }
 
   render() {
+    const { isLoading, error, movies } = this.props;
     return (
       <View style={{flex: 1}}>
         <Form />
-        <MovieList
-          list={this.state.list}
+        {
+          isLoading ?
+          <Text>isLoading</Text>
+          :
+          <MovieList
+          list={movies}
           goToMovie={this.goToMovie}
         />
+        }
       </View>
     );
   }
 }
 
-export default DiscoverView;
+const mapStateToProps = ({ movies, isLoading, error })=> ({
+  movies,
+  isLoading,
+  error
+});
+
+const mapDispatchToProps = dispatch => ({
+  load() {
+    dispatch(fetchMoviesAction())
+  }
+});
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DiscoverView);
