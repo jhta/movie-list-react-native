@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {
   View,
   Text,
+  ActivityIndicator,
   ScrollView,
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
@@ -42,12 +43,16 @@ class DiscoverView extends Component {
         <Form />
         {
           isLoading ?
-          <Text>isLoading</Text>
+          <ActivityIndicator
+            animating
+            style={{ flex: 1, height: 100, justifyContent: 'center', alignItems: 'center' }}
+            size="large"
+          />
           :
           <MovieList
-          list={movies}
-          goToMovie={this.goToMovie}
-        />
+            list={movies}
+            goToMovie={this.goToMovie}
+          />
         }
       </View>
     );
