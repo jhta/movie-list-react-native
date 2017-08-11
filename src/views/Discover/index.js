@@ -3,13 +3,12 @@ import { connect } from 'react-redux';
 import {
   View,
   Text,
-  ActivityIndicator,
-  ScrollView,
+  ScrollView
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import MovieList from '../../components/MovieList.js';
+import Spinner from '../../components/Spinner.js';
 import Form from '../../components/Form.js';
-import { fetchMovies } from '../../api.js';
 import { fetchMovies as fetchMoviesAction } from '../../actions';
 
 
@@ -40,19 +39,16 @@ class DiscoverView extends Component {
     const { isLoading, error, movies } = this.props;
     return (
       <View style={{flex: 1}}>
+        <Text>{ error ? "paila socio" : null}</Text>
         <Form />
         {
           isLoading ?
-          <ActivityIndicator
-            animating
-            style={{ flex: 1, height: 100, justifyContent: 'center', alignItems: 'center' }}
-            size="large"
-          />
-          :
-          <MovieList
-            list={movies}
-            goToMovie={this.goToMovie}
-          />
+            <Spinner />
+            :
+            <MovieList
+              list={movies}
+              goToMovie={this.goToMovie}
+            />
         }
       </View>
     );

@@ -13,7 +13,7 @@ import MovieView from './src/views/Detail';
 import DiscoverView from './src/views/Discover';
 import reducer from './src/reducers/movies.js';
 import createSagaMiddleware from 'redux-saga';
-import moviesSaga from './src/sagas/movies.js';
+import rootSaga from './src/sagas/movies.js';
 
 const AppNavigation = StackNavigator({
   Main: {
@@ -30,7 +30,7 @@ const store = createStore(
   applyMiddleware(sagaMiddleware)
 );
 
-sagaMiddleware.run(moviesSaga);
+sagaMiddleware.run(rootSaga);
 
 class App extends Component {
   render() {
