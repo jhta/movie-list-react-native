@@ -9,7 +9,7 @@ import { StackNavigator } from 'react-navigation';
 import MovieList from '../../components/MovieList.js';
 import Spinner from '../../components/Spinner.js';
 import Form from '../../components/Form.js';
-import { fetchMovies as fetchMoviesAction } from '../../actions';
+import { fetchMovies, searchMovies } from '../../actions';
 
 
 class DiscoverView extends Component {
@@ -36,11 +36,11 @@ class DiscoverView extends Component {
   }
 
   render() {
-    const { isLoading, error, movies } = this.props;
+    const { isLoading, error, movies, search } = this.props;
     return (
       <View style={{flex: 1}}>
         <Text>{ error ? "paila socio" : null}</Text>
-        <Form />
+        <Form onSearch={search}/>
         {
           isLoading ?
             <Spinner />
@@ -63,7 +63,10 @@ const mapStateToProps = ({ movies, isLoading, error })=> ({
 
 const mapDispatchToProps = dispatch => ({
   load() {
-    dispatch(fetchMoviesAction())
+    dispatch(fetchMovies())
+  },
+  search(query = '') {
+    dispatch(searchMovies(query))
   }
 });
 
