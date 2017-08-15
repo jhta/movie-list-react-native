@@ -29,7 +29,7 @@ class Form extends Component {
           value={text}
           onChangeText={text => { this.setState({ text }) }}
         />
-        <TouchableHighlight onPress={e => { onSearch(text) }}>
+        <TouchableHighlight onPress={e => { onSearch(this.sate.text) }}>
           <View style={styles.search}>
             <Icon name="search" size={30} color="#000"/>
           </View>
