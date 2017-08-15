@@ -22,7 +22,7 @@ function *fetchMoviesSaga(action) {
 
 function *searchMovieSaga(action) {
   try {
-    const movies = yield call(searchMovies);
+    const movies = yield call(searchMovies, action.payload);
     yield put(searchMoviesSuccess({ movies }));
   } catch (error) {
     yield put(searchMoviesFailed({ error }))
