@@ -25,13 +25,13 @@ class Form extends Component {
         <TextInput
           style={styles.input}
           placeholder="Wonderwoman"
-          underlayColor="black"
+          underlineColorAndroid="transparent"
           value={text}
           onChangeText={text => { this.setState({ text }) }}
         />
         <TouchableHighlight onPress={e => { onSearch(this.state.text) }}>
           <View style={styles.search}>
-            <Icon name="search" size={30} color="#000"/>
+            <Icon name="search" size={22} color="#ccc"/>
           </View>
         </TouchableHighlight>
       </View>
@@ -42,15 +42,17 @@ class Form extends Component {
 const styles = StyleSheet.create({
   form: {
     flexDirection: 'row',
-    padding: 5,
+    padding: 0,
     backgroundColor: '#fff',
-    marginTop: 10,
-    marginBottom: 10
+    shadowColor: '#000',
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc'
   },
   input: {
     flex: 1,
-    height: 60,
-    fontSize: 20
+    height: 50,
+    fontSize: 20,
+    borderBottomWidth: 0
   },
   search: {
     height: 40,

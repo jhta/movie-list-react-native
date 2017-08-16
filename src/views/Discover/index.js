@@ -10,7 +10,7 @@ import MovieList from '../../components/MovieList.js';
 import Spinner from '../../components/Spinner.js';
 import Form from '../../components/Form.js';
 import { fetchMovies, searchMovies } from '../../actions';
-
+import { Icon } from 'react-native-vector-icons/MaterialIcons';
 
 class DiscoverView extends Component {
 
@@ -23,7 +23,7 @@ class DiscoverView extends Component {
   }
 
   static navigationOptions = {
-    title: 'WATCHLIST',
+    header: null
   };
 
   componentWillMount() {

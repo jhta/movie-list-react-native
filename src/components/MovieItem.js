@@ -47,11 +47,13 @@ const style = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: '#ccc',
     height: 210,
-    marginBottom: 4
+    marginTop: 4
   },
   content: {
     flex: 1,
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    borderColor: '#ccc',
+    borderLeftWidth: 1
   },
   description: {
     padding: 16,
@@ -63,7 +65,9 @@ const style = StyleSheet.create({
   },
   image: {
     width: 140,
-    height: 210
+    height: 209,
+    borderRightWidth: 1,
+    borderColor: '#ccc'
   },
   meta: {
     flexDirection: 'row',

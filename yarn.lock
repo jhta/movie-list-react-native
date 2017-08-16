@@ -2994,6 +2994,10 @@ react-native-fit-image@^1.4.9:
   version "1.4.9"
   resolved "https://registry.yarnpkg.com/react-native-fit-image/-/react-native-fit-image-1.4.9.tgz#ee35e7fad7f6a144372bfc1688687b33aff7a6fa"
 
+react-native-material-bottom-navigation@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/react-native-material-bottom-navigation/-/react-native-material-bottom-navigation-0.5.1.tgz#50339df7243ae1fdbea6f89d6457908f92b90c83"
+
 react-native-tab-view@^0.0.65:
   version "0.0.65"
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-0.0.65.tgz#b685ea3081ff7c96486cd997361026c407302c59"
