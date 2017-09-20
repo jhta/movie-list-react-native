@@ -7,50 +7,33 @@ import {
   SUCCESS_SEARCH_MOVIE,
   FAILED_SEARCH_MOVIE
 } from '../constants/actions.js';
+import { fromJS, Map } from 'immutable';
 
-const defaultState = {
+const defaultState = Map({
   isLoading: false,
   movies: [],
   error: false
-};
+});
+
+const errorFetch = (state, { payload }) => state
+    .set('error', payload.error)
+    .set('isLoading', false)
+
+const successFullFetch = (state, { payload }) => state
+  .set('isLoading', false)
+  .set('movies', payload.movies)
+
+const fetching = (state) => state
+  .set('isLoading', true)
 
 
 const reducer = handleActions({
-  FETCH_MOVIES: (state, { payload }) => ({
-    isLoading: true,
-    error: false,
-    movies: []
-  }),
-
-  SUCCESS_FETCH_MOVIES: (state, { payload }) => ({
-    isLoading: false,
-    error: false,
-    movies: payload.movies
-  }),
-
-  FAILED_FETCH_MOVIES: (state, { payload  }) => ({
-    isLoading: false,
-    error: payload.error,
-    movies: state.movies
-  }),
-   SEARCH_MOVIE: (state, { payload }) => ({
-    isLoading: true,
-    error: false,
-    movies: []
-  }),
-
-  SUCCESS_SEARCH_MOVIE: (state, { payload }) => ({
-    isLoading: false,
-    error: false,
-    movies: payload.movies
-  }),
-
-  FAILED_SEARCH_MOVIE: (state, { payload  }) => ({
-    isLoading: false,
-    error: payload.error,
-    movies: state.movies
-  })
-
+  FETCH_MOVIES: fetching,
+  SUCCESS_FETCH_MOVIES: successFullFetch,
+  FAILED_FETCH_MOVIES: errorFetch,
+  SEARCH_MOVIE: fetching,
+  SUCCESS_SEARCH_MOVIE: successFullFetch,
+  FAILED_SEARCH_MOVIE: errorFetch
 
 }, defaultState);
 

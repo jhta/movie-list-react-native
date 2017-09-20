@@ -55,11 +55,7 @@ class DiscoverView extends Component {
   }
 }
 
-const mapStateToProps = ({ movies, isLoading, error })=> ({
-  movies,
-  isLoading,
-  error
-});
+const mapStateToProps = state => (state.toJS());
 
 const mapDispatchToProps = dispatch => ({
   load() {

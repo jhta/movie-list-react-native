@@ -7,6 +7,7 @@ import {
   Button,
   TouchableHighlight
 } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const MovieItem = ({ movie, goToMovie }) => {
 
@@ -16,25 +17,27 @@ const MovieItem = ({ movie, goToMovie }) => {
   };
 
   return (
-    <View style={style.container}>
-      <Image source={pick} style={style.image}/>
-      <View style={style.content}>
-        <View style={style.description}>
-          <Text style={style.title}>{title.slice(0, 40).toUpperCase()}</Text>
-          <Text>{`${overview.slice(0,90)}...`}</Text>
-        </View>
-        <View style={style.meta}>
-          <View style={style.metaOption}>
-            <Text style={style.metaText}>{`${vote_average}/10`}</Text>
+    <TouchableHighlight underlayColor="white" onPress={() => { goToMovie(movie) }}>
+      <View style={style.container}>
+        <Image source={pick} style={style.image}/>
+        <View style={style.content}>
+          <View style={style.description}>
+            <Text style={style.title}>{title.slice(0, 40).toUpperCase()}</Text>
+            <Text>{`${overview.slice(0,90)}...`}</Text>
           </View>
-          <TouchableHighlight underlayColor="white" onPress={() => { goToMovie(movie) }}>
-            <View style={style.metaOption}>
-              <Text style={style.metaText}>More info</Text>
+          <View style={style.meta}>
+            <TouchableHighlight onPress={() => { console.log("_______+++::::::____") }}>
+            <View style={{padding: 10, borderColor: "#ccc", borderWidth: 1}}>
+              <Icon name="plus" size={20} color="#ccc" />
             </View>
-        </TouchableHighlight>
+          </TouchableHighlight>
+            <View style={style.metaOption}>
+              <Text style={style.metaText}>{`${vote_average}/10`}</Text>
+            </View>
+          </View>
         </View>
       </View>
-    </View>
+    </TouchableHighlight>
   );
 }
 
@@ -46,7 +49,7 @@ const style = StyleSheet.create({
     width: '100%',
     borderBottomWidth: 1,
     borderColor: '#ccc',
-    height: 210,
+    height: 180,
     marginTop: 4
   },
   content: {
@@ -56,23 +59,21 @@ const style = StyleSheet.create({
     borderLeftWidth: 1
   },
   description: {
-    padding: 16,
+    padding: 10,
     alignSelf: 'stretch'
   },
   title: {
-    fontSize: 19,
+    fontSize: 18,
     fontWeight: 'bold'
   },
   image: {
-    width: 140,
-    height: 209,
+    width: 126,
+    height: 178,
     borderRightWidth: 1,
     borderColor: '#ccc'
   },
   meta: {
     flexDirection: 'row',
-    borderTopWidth: 1,
-    borderColor: '#ddd',
     alignSelf: 'stretch'
   },
   metaOption: {
